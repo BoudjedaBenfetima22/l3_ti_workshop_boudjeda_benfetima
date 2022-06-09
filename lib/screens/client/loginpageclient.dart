@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/signuppageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
@@ -99,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
               text1: 'SignUp',
               onTap: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Type()));
+                    context, MaterialPageRoute(builder: (context) => SignupPageClient()));
               },
               text: "Don't have an account ?",
             ),
