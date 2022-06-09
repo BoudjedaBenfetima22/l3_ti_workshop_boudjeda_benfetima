@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:image_picker/image_picker.dart';
@@ -563,7 +564,7 @@ Widget _buildGridView() {
     
         if (response.statusCode == 201) {
           Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddOfferView()));
+                      MaterialPageRoute(builder: (context) => OffersListView()));
                  
         } else {
           _showMsg('Error ${response.body}');

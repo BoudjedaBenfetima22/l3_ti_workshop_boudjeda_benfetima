@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/home_page.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
@@ -182,10 +183,10 @@ class _SignupPageClientState extends State<SignupPageClient> {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
-      // Navigator.push(
-      //   context,
-      //   new MaterialPageRoute(builder: (context) => Home()),
-      // );
+      Navigator.push(
+        context,
+        new MaterialPageRoute(builder: (context) => MyHomePage(title: '',)),
+      );
       _showMsg(body['message']);
       Navigator.pop(context);
     } else {
