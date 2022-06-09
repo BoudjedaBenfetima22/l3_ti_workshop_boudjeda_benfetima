@@ -164,18 +164,14 @@ class _SignupPageClientState extends State<SignupPageClient> {
     // setState(() {
     //   _isLoading = true;
     // });
-    var email= emailcontroller.text; 
-    var password= passcontroller.text;
-    var name = usernamecontroller.text;
-    var phone = phonecontroller.text;
     var map = new Map<String, dynamic>();
-    map['email'] = email;
-    map['password'] = password;
-    map['name'] = name;
-    map['phone'] = '0556454';
+    map['email'] = emailcontroller.text;
+    map['password'] = passcontroller.text;
+    map['name'] = usernamecontroller.text;
+    map['phone'] = phonecontroller.text;
     map['photo']='jjjjjjj';
-    map['wilaya']='mila';
-        var response = await Api().postData(map, '/register_client');
+    map['wilaya']='wilaya';
+        var response = await Api().postData(map,'/register_client');
 
 
 

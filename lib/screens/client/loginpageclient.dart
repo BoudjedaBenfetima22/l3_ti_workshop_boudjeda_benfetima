@@ -87,9 +87,9 @@ class _LoginPageState extends State<LoginPage> {
               fontWeight: FontWeight.bold,
               fontSize: 18,
               onPressed: () { 
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyHomePage(title: '',)));             
-              //  _login();s
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => MyHomePage(title: '',)));             
+               _login();
               },
               text: 'Login',
             ),
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
     map['email'] = email;
     map['password'] = password;
  
-    var response = await Api().postData(map, '/login_client');
+    var response = await Api().postData(map,'/login_client');
 
     if (response.statusCode == 200) {
       var body = json.decode(response.body);
