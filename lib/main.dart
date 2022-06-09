@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/loginpage.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/onboardingpage.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
 
 
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: initScreen == 1 || initScreen == null ? 'onboard' : 'home',
       routes: {
-        'home' : (context) => LoginPage(),
+        'home' : (context) => Type(),
         'onboard': (context) => onBoardingPage(),
       },
     );

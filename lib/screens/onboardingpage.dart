@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/loginpage.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
 
 class onBoardingPage extends StatelessWidget {
   const onBoardingPage({Key? key}) : super(key: key);
@@ -11,27 +11,27 @@ class onBoardingPage extends StatelessWidget {
     return IntroductionScreen(
       pages: [
         PageViewModel(
-          title: 'WELCOME ',
-          body: 'blablablablablabalbala',
-          image: buildImage('assets/onboard1bg.png'),
+          title: 'Welcome To IMMO App',
+          body: 'Let us Guide you Home',
+          image: buildImage(),
+          decoration: buildDecoration(),
+        ),
+        PageViewModel(
+          title: 'Search properties ',
+          body: 'For Sale,Rent or Exchange',
+          image: buildImage(),
+          decoration: buildDecoration(),
+        ),
+        PageViewModel(
+          title: 'Buy or Rent a House',
+          body: "With filters,IMMO can help you easily find a property that you'll love. ",
+          image: buildImage(),
           decoration: buildDecoration(),
         ),
         PageViewModel(
           title: 'blablablablablabalbala',
           body: 'blablablablablabalbala',
-          image: buildImage('assets/onboard2bg.png'),
-          decoration: buildDecoration(),
-        ),
-        PageViewModel(
-          title: 'blablablablablabalbala',
-          body: 'blablablablablabalbala ',
-          image: buildImage('assets/onboard3bg.png'),
-          decoration: buildDecoration(),
-        ),
-        PageViewModel(
-          title: 'blablablablablabalbala',
-          body: 'blablablablablabalbala',
-          image: buildImage('assets/onboard4bg.png'),
+          image: buildImage(),
           decoration: buildDecoration(),
         ),
       ],
@@ -61,8 +61,9 @@ class onBoardingPage extends StatelessWidget {
   void goToHome(BuildContext context) => Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => LoginPage()));
 
-  Widget buildImage(String path) => Center(
-      child: Image.asset(path)
+  Widget buildImage() => Center(
+      // child: Image.asset(path)
+      child:SizedBox(height: 30,),
   );
 
   PageDecoration buildDecoration() => PageDecoration(

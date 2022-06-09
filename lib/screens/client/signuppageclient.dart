@@ -3,24 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/loginpage.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SignupPageAgency extends StatefulWidget {
+class SignupPageClient extends StatefulWidget {
   @override
-  _SignupPageAgencyState createState() => _SignupPageAgencyState();
+  _SignupPageClientState createState() => _SignupPageClientState();
 }
 
-class _SignupPageAgencyState extends State<SignupPageAgency> {
+class _SignupPageClientState extends State<SignupPageClient> {
+
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
   TextEditingController emailcontroller = new TextEditingController();
   TextEditingController passcontroller = new TextEditingController();
   TextEditingController phonecontroller = new TextEditingController();
-  TextEditingController agencynamecontroller = new TextEditingController();
-  TextEditingController adresscontroller = new TextEditingController();
+  TextEditingController usernamecontroller = new TextEditingController();
   late String e;
   @override
   Widget build(BuildContext context) {
@@ -32,75 +32,51 @@ class _SignupPageAgencyState extends State<SignupPageAgency> {
 
   Widget _buildSignupLayout() {
     return Container(
-      margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
+      margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 40.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             SizedBox(
-              height: 60,
+              height: 70,
             ),
-            SizedBox(
-              child: Text(
-                'Welcome!',
-                style: GoogleFonts.poppins(
-                    fontSize: 25,
-                    color: Color(0xff235265),
-                    letterSpacing: 0.5,
-                    fontWeight: FontWeight.bold),
-              ),
+          SizedBox(
+            child:Text (
+       'Welcome!',
+        style: GoogleFonts.poppins(
+            fontSize: 25,
+            color: Color(0xff235265),
+            letterSpacing: 0.5,
+            fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              child: Text(
-                'Create Your Account',
-                style: GoogleFonts.poppins(
-                    fontSize: 23,
-                    color: Color.fromARGB(243, 50, 98, 117),
-                    letterSpacing: 0.24,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
+          ),
             SizedBox(
               height: 20,
             ),
+          SizedBox(
+            child:Text (
+        'Create Your Account',
+        style: GoogleFonts.poppins(
+            fontSize: 23,
+            color: Color.fromARGB(243, 50, 98, 117),
+            letterSpacing: 0.24,
+            fontWeight: FontWeight.w500),
+            ),
+          ),
+            SizedBox(
+              height: 30,
+            ),
             FormFieldCustom(
-              controller: agencynamecontroller,
-              hintText: 'Agency name',
+              controller: usernamecontroller,
+              hintText: 'Username',
               keyboardType: TextInputType.text,
               isPassword: false,
-              icono: FontAwesomeIcons.building,
-              validator: (val) => val!.isEmpty ? "enter a valid name" : null,
+              icono: FontAwesomeIcons.circleUser,
+              validator: (val) =>
+                  val!.isEmpty ? "enter a valid Username" : null,
             ),
             SizedBox(
-              height: 8.0,
-            ),
-            FormFieldCustom(
-              controller: adresscontroller,
-              hintText: ' Adress',
-              keyboardType: TextInputType.text,
-              isPassword: false,
-              icono: FontAwesomeIcons.locationDot,
-              validator: (val) => val!.isEmpty ? "enter a valid adress" : null,
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            FormFieldCustom(
-                controller: phonecontroller,
-                hintText: 'Phone Number',
-                keyboardType: TextInputType.phone,
-                isPassword: false,
-                icono: FontAwesomeIcons.phone,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Text is empty';
-                  }
-                }),
-            SizedBox(
-              height: 8.0,
+              height: 10.0,
             ),
             FormFieldCustom(
               controller: emailcontroller,
@@ -113,7 +89,7 @@ class _SignupPageAgencyState extends State<SignupPageAgency> {
                   : null,
             ),
             SizedBox(
-              height: 8.0,
+              height: 10.0,
             ),
             FormFieldCustom(
                 controller: passcontroller,
@@ -129,6 +105,24 @@ class _SignupPageAgencyState extends State<SignupPageAgency> {
                     return null;
                   }
                 }),
+                SizedBox(
+              height: 10.0,
+            ),
+            FormFieldCustom(
+                controller: phonecontroller,
+                hintText: 'Phone Number',
+                keyboardType: TextInputType.phone,
+                isPassword: false,
+                icono: FontAwesomeIcons.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Text is empty';
+                  } 
+                }),
+            SizedBox(
+              height: 10.0,
+            ),
+
             ButtonCustom(
               color: Color(0xff235265),
               borderRadius: 32.0,
@@ -170,34 +164,36 @@ class _SignupPageAgencyState extends State<SignupPageAgency> {
     // setState(() {
     //   _isLoading = true;
     // });
-    var data = {
-      'email': emailcontroller.text,
-      'password': passcontroller.text,
-      'phone number': phonecontroller.text,
-      'agency name': agencynamecontroller.text,
-      'adress': adresscontroller.text,
-    };
+    var email= emailcontroller.text; 
+    var password= passcontroller.text;
+    var name = usernamecontroller.text;
+    var phone = phonecontroller.text;
+    var map = new Map<String, dynamic>();
+    map['email'] = email;
+    map['password'] = password;
+    map['name'] = name;
+    map['phone'] = '0556454';
+    map['photo']='jjjjjjj';
+    map['wilaya']='mila';
+        var response = await Api().postData(map, '/register_client');
 
-    // var map = new Map<String, dynamic>();
-    // map['email'] = email;
-    // map['password'] = password;
-    var response = await Api().postData(data, '/SignUp');
+
 
     if (response.statusCode == 200) {
       var body = json.decode(response.body);
       _showMsg(response.body);
 
-      // SharedPreferences localStorage = await SharedPreferences.getInstance();
-      // localStorage.setString('token', json.encode(body['token']));
-      // localStorage.setString('user', json.encode(body['user']));
-      // // Navigator.push(
-      // //   context,
-      // //   new MaterialPageRoute(builder: (context) => Home()),
-      // // );
-      // //_showMsg(body['message']);
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('token', json.encode(body['token']));
+      localStorage.setString('user', json.encode(body['user']));
+      // Navigator.push(
+      //   context,
+      //   new MaterialPageRoute(builder: (context) => Home()),
+      // );
+      _showMsg(body['message']);
       Navigator.pop(context);
     } else {
-      _showMsg('Error ${response.statusCode}');
+      _showMsg('Error ${response.body}');
     }
 
     // setState(() {

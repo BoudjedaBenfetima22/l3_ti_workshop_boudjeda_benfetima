@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.l3_ti_workshop_boudjeda_benfetima">
+  
    <application
         android:label="l3_ti_workshop_boudjeda_benfetima"
         android:name="${applicationName}"
