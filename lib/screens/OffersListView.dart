@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
-
-import 'AddOfferView.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
+import 'OfferDetailsView.dart';
 
 class OffersListView extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class OffersListView extends StatefulWidget {
 }
 
 class _OffersListState extends State<OffersListView> {
-  var _meals = [];
+  var _offers = [];
 
   @override
   void initState() {
@@ -26,17 +27,22 @@ class _OffersListState extends State<OffersListView> {
     return Scaffold(
       appBar: AppBar(title: Text('Offers List')),
       body: Column(children: [
+        TextButton(onPressed: () {
+          Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AddOfferView()))
+              .then((_) => _loadOffers());
+        },child: Text('jjj'),),
         Expanded(
             child: ListView.builder(
           itemBuilder: _buildOfferItem,
-          itemCount: _meals.length,
+          itemCount: _offers.length,
         ))
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AddOfferView()))
-              .then((_) => _loadOffers());
+          // Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => AddOfferView()))
+          //     .then((_) => _loadOffers());
         },
         tooltip: 'Add',
         child: Icon(Icons.add),
@@ -47,11 +53,18 @@ class _OffersListState extends State<OffersListView> {
   Widget _buildOfferItem(BuildContext context, int index) {
     return Card(
       child: ListTile(
-        leading: Image.network(Api().getOfferImageUrl(_meals[index]['Id'])),
-        title: Text(_meals[index]['Title'],
+        //leading: Image.network(Api().getOfferImageUrl(_meals[index]['Id'])),
+        title: Text(_offers[index]['wilaya'],
             style: TextStyle(color: Colors.black54)),
-        subtitle: Text(_meals[index]['Price'].toString(),
+        subtitle: Text(_offers[index]['prix'].toString(),
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      OfferDetailsView(offer_id: _offers[index]['id'])));
+        },
       ),
     );
   }
@@ -60,7 +73,7 @@ class _OffersListState extends State<OffersListView> {
     var response = await Api().getData('/offers');
     if (response.statusCode == 200) {
       setState(() {
-        _meals = json.decode(response.body);
+        _offers = json.decode(response.body);
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
