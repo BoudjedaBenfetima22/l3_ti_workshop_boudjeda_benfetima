@@ -6,21 +6,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/houses.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/studio.dart';
 import 'Agency/OfferDetailsView.dart';
-import 'appartement.dart';
-import 'villa.dart';
 
-class OffersListView extends StatefulWidget {
+class villa extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     
-    return _OffersListState();
+    return _villaState();
   }
 }
 
-class _OffersListState extends State<OffersListView> {
+class _villaState extends State<villa> {
   var _offers = [];
  
   @override
@@ -35,12 +31,11 @@ class _OffersListState extends State<OffersListView> {
       backgroundColor: Color(0xffF5F8F9),
       body: Column(children: [
         Row(children: [
-          SizedBox(width: 290,),
-          IconButton(onPressed: () {
-            
-          }, icon: Icon(Icons.menu)),
+          IconButton(onPressed: () 
+                  => Navigator.of(context).pop()
+                
+          , icon: Icon(Icons.arrow_back_ios)),
         ],),
-        head(),
         Expanded(
             child: ListView.builder(
           itemBuilder: _buildOfferItem,
@@ -218,189 +213,10 @@ class _OffersListState extends State<OffersListView> {
       
         ],),);
   }
-  head(){
-    return Column(children: [
-     Row(children:[
-      SizedBox(
-              height: 90.0,
-              child: Image.asset(
-                "assets/logo.png",
-                fit: BoxFit.contain,
-              ),
-            ) ,
-  
-            Column(
-              children: const [
-               Padding(
-                  padding: const EdgeInsets.only(left: 12,right:120),
-                  child: Text(
-                  'Welcome! ',
-                  style: TextStyle(
-                    fontSize: 23.0,
-                    fontFamily: 'poppins',
-                    color: Color(0xff235265),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12,right:10,top: 10),
-                  child: Text(
-                    ' Let us Guide You Home',
-                    style: TextStyle(
-                        fontSize: 21.0,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'poppins'),
-                  ),
-                )
-              ],
-            ),
-          ],),
-          
-          SingleChildScrollView(
-  scrollDirection: Axis.horizontal,
-  child:Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5,) ,
-                  height: 40,
-                    decoration: BoxDecoration(    color: Color(0xff235265),
-                borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                    color: Color.fromARGB(253, 230, 242, 248),
-                    blurRadius: 25,
-                    offset: Offset(0, 5),
-                    spreadRadius: -25,
-                  ),
-],),
-                  child: TextButton(
-                    child: const Text(
-                      'All ',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontFamily: "poppins",
-                      ),
-                    ),
-                    onPressed: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => signup()));
-                    },
-                  )),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(    color: Color.fromARGB(253, 230, 242, 248),
-                borderRadius: BorderRadius.circular(30),
-                ),
-                margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5,) ,
-                  child: TextButton(
-                child: const Text(
-                  'Villa ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black54,
-                    fontFamily: "poppins",
-                  ),
-                ),
-                onPressed: () {
-                   Navigator.of(context).push(
-                       MaterialPageRoute(builder: (context) => villa()));
-                },
-              )),
-              Container(
-                height: 40,
-                margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5,) ,
-  decoration: BoxDecoration(    color: Color.fromARGB(253, 230, 242, 248),
-                borderRadius: BorderRadius.circular(30),
-      ),
-                  child: TextButton(
-                child: const Text(
-                  'Appartements ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black54,
-                    fontFamily: "poppins",
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => OffersListappartement()));
-                },
-              )),
-              Container(
-                height: 40,
-                margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5,) ,
-  decoration: BoxDecoration(    color: Color.fromARGB(253, 230, 242, 248),
-                borderRadius: BorderRadius.circular(30),
-              ),
-                  child: TextButton(
-                child: const Text(
-                  'Houses ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black54,
-                    fontFamily: "poppins",
-                  ),
-                ),
-                onPressed:  () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Houses()));
-                },
-              )),
-              Container(
-                height: 40,
-                margin:const EdgeInsets.symmetric(horizontal: 5,vertical: 5,) ,
-  decoration: BoxDecoration(    color: Color.fromARGB(253, 230, 242, 248),
-                borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 25,
-                    offset: Offset(0, 5),
-                    spreadRadius: -25,
-                  ),
-],),
-                  child: TextButton(
-                child: const Text(
-                  'Studio ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black54,
-                    fontFamily: "poppins",
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Studio()));
-                },
-              )),
-            ],
-          ),),
-          // const SizedBox(
-          //   height: 20,
-          // ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10 ,vertical: 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Latest Offers",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                      fontSize: 20,
-                      fontFamily: 'poppins',
-                    )),
-                
-              ],
-            ),
-          ),],);
-  }
+
   _loadOffers() async {
     // dynamic url='/offers';
-    var response = await Api().getData('/offers');
+    var response = await Api().getData('/villaCat');
     if (response.statusCode == 200) {
       setState(() {
         _offers = json.decode(response.body);

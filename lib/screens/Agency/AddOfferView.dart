@@ -27,7 +27,7 @@ class _AddOfferState extends State<AddOfferView> {
   var user_id = 1;
   var price;
   String categoryValue='appartement';
-  String typeValue = 'A vendre';
+  String typeValue = 'For Sale';
   String dropdownValue = 'Adrar';
   TextEditingController titlecontroller = new TextEditingController();
   TextEditingController pricecontroller = new TextEditingController();
@@ -150,13 +150,6 @@ Widget _buildGridView() {
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             FormFieldCustom(
-              controller: titlecontroller,
-              icono: FontAwesomeIcons.t,
-              hintText: 'Title',
-              keyboardType: TextInputType.text,
-              validator: (val) => val!.isEmpty ? "enter some text" : null,
-            ),
-            FormFieldCustom(
               controller: pricecontroller,
               hintText: 'Price',
               icono: FontAwesomeIcons.dollarSign,
@@ -230,9 +223,10 @@ Widget _buildGridView() {
                     items: <String>[
                       'appartement',
                       'villa',
-                      'niveau de villa',
+                      'castle',
                       'studio',
-                      'colocation',
+                      'bungalow',
+                      'house',
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -388,7 +382,8 @@ Widget _buildGridView() {
               child: Row(
                 children: [
                   Icon(
-                    Icons.sell,
+                    Icons.real_estate_agent
+                    ,
                     color: Color(0xff235265),
                     size: 20,
                   ),
@@ -398,9 +393,9 @@ Widget _buildGridView() {
                   DropdownButton<String>(
                     value: typeValue,
                     items: <String>[
-                      'A vendre',
-                      'A Louer',
-                      'Exchage',
+                      'For Rent',
+                      'For Sale',
+                      'For Exchage',
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -421,54 +416,6 @@ Widget _buildGridView() {
                     },
                   ),
 
-                ],
-              ),
-            ),
-          
-            //  DropdownButton<String>(
-              
-            //   hint: Text('Select Category'),
-            //   items: categories.map<DropdownMenuItem<String>>((item) {
-            //     return new DropdownMenuItem(
-            //       child: Text(item['name']),
-            //       value: item['id'].toString(),
-            //     );
-            //   }).toList(),
-            //   onChanged: (value){
-            //     setState(() {
-            //       category_id = value!;
-            //     });
-            //   }, 
-            //   value: category_id,             
-            // ),
-            Container(
-              width: 370.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(60),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 25,
-                    offset: Offset(0, 5),
-                    spreadRadius: -25,
-                  ),
-                ],
-                color: Colors.white,
-              ),
-              margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
-              padding: EdgeInsets.fromLTRB(10, 6, 5, 6),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.real_estate_agent,
-                    color: Color(0xff235265),
-                    size: 20,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
                 ],
               ),
             ),
@@ -493,7 +440,7 @@ Widget _buildGridView() {
                           width: 10,
                         ),
                         Text(
-                          "Add Image",
+                          "Add Images",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -526,27 +473,10 @@ Widget _buildGridView() {
 
 
    void _submit() async {
+     print(images.length);
         // setState(() {
         //   _isLoading = true;
         // });
-        
-  switch (categoryValue) {
-    case'villa':
-      category_id='1';
-      break;
-    case'appartement': 
-     category_id='2';
-      break;
-      case'niveau de villa': 
-     category_id='3';
-      break;
-      case'colocation': 
-     category_id='4';
-      break;
-      case'studio': 
-     category_id='5';
-      break;
-  }
         var data = new Map<String, String>();
         // data['title'] = titlecontroller.text;
         data['prix'] = pricecontroller.text;
@@ -557,11 +487,10 @@ Widget _buildGridView() {
         data['nombre_des_salles_de_bain'] =bathroomscontroller.text;
         data['nombre_des_cuisines'] =kitchencontroller.text;
         data['type_doffre'] =typeValue ;
-        data['category_id'] = category_id;
-         data['agence_id'] = '1';
-        var response = await Api().postDataWithImages(data, '/offers', images);
+        data['categorie'] = categoryValue;
+        data['agence_id'] = '1';
+        var response = await Api().postDataWithImages(data,'/offers',images);
         // var response = await Api().postData(data, '/offers');
-    
         if (response.statusCode == 201) {
           Navigator.push(context,
                       MaterialPageRoute(builder: (context) => OffersListView()));

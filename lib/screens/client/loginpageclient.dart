@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/home_pagec.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/signuppageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/home_page.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -87,8 +88,8 @@ class _LoginPageState extends State<LoginPage> {
               fontWeight: FontWeight.bold,
               fontSize: 18,
               onPressed: () { 
-                // Navigator.push(
-                //     context, MaterialPageRoute(builder: (context) => MyHomePage(title: '',)));             
+                 Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyHomePageC(title: '',)));             
                _login();
               },
               text: 'Login',

@@ -13,25 +13,19 @@ class onBoardingPage extends StatelessWidget {
         PageViewModel(
           title: 'Welcome To IMMO App',
           body: 'Let us Guide you Home',
-          image: buildImage(),
+          image: buildImage('assets/1.png'),
           decoration: buildDecoration(),
         ),
         PageViewModel(
           title: 'Search properties ',
           body: 'For Sale,Rent or Exchange',
-          image: buildImage(),
+          image: buildImage('assets/Search.png'),
           decoration: buildDecoration(),
         ),
         PageViewModel(
           title: 'Buy or Rent a House',
-          body: "With filters,IMMO can help you easily find a property that you'll love. ",
-          image: buildImage(),
-          decoration: buildDecoration(),
-        ),
-        PageViewModel(
-          title: 'blablablablablabalbala',
-          body: 'blablablablablabalbala',
-          image: buildImage(),
+          body: "With filters,IMMO can help you easily find  properties . ",
+          image: buildImage('assets/filters.png'),
           decoration: buildDecoration(),
         ),
       ],
@@ -43,7 +37,7 @@ class onBoardingPage extends StatelessWidget {
       onSkip: () => goToHome(context),
       dotsDecorator: getDotDecoration(),
       animationDuration: 1000,
-      globalBackgroundColor: Color(0xffF5f8f9),
+      globalBackgroundColor: Color.fromARGB(255, 255, 255, 255),
     );
   }
 
@@ -59,17 +53,17 @@ class onBoardingPage extends StatelessWidget {
   );
 
   void goToHome(BuildContext context) => Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => LoginPage()));
+      MaterialPageRoute(builder: (_) => Type()));
 
-  Widget buildImage() => Center(
-      // child: Image.asset(path)
-      child:SizedBox(height: 30,),
+  Widget buildImage(String path) => Center(
+       child: Image.asset(path),
+      // child:SizedBox(height: 30,),
   );
 
   PageDecoration buildDecoration() => PageDecoration(
     titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xff235265)),
     bodyTextStyle: TextStyle(fontSize: 20,),
-    pageColor: Color(0xffF5f8f9),
+    pageColor: Color.fromARGB(255, 255, 255, 255),
     imagePadding: EdgeInsets.all(0),
   );
 }

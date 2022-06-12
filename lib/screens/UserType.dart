@@ -19,35 +19,48 @@ class _TypeState extends State<Type> {
     return Scaffold(
       backgroundColor: Color(0xffF5F8F9),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
+           SizedBox(height: 150,),
+          SizedBox(
+            child:Text (
+        "Let's Get Started ",
+        style: GoogleFonts.poppins(
+            fontSize: 30,
+            color: Color.fromARGB(243, 50, 98, 117),
+            letterSpacing: 0.5,
+            fontWeight: FontWeight.w600),
+            ),
+          ),
+          SizedBox(height: 130,),
           ButtonCustom(
             color: Color(0xff235265),
             borderRadius: 32.0,
             textColor: Color.fromARGB(255, 253, 255, 255),
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            fontSize: 26,
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
-            text: 'Client',
+            text: '  Client  ',
           ),
           SizedBox(
-            height: 30,
+            height: 25,
           ),
           ButtonCustom(
             color: Color(0xff235265),
             borderRadius: 32.0,
             textColor: Color.fromARGB(255, 253, 255, 255),
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            fontSize: 26,
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPageA()),
+                MaterialPageRoute(builder: (context) =>
+                  LoginPageA()),
               );
             },
             text: 'Agency',

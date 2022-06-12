@@ -10,7 +10,7 @@ import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../home_page.dart';
+import 'home_page.dart';
 
 class SignupPageAgency extends StatefulWidget {
   @override
@@ -199,9 +199,11 @@ var adresse=adresscontroller.text;
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
+       var userJson = localStorage.getString('user');
+      var user =jsonDecode(userJson!);
       Navigator.push(
         context,
-        new MaterialPageRoute(builder: (context) => MyApp()),
+        new MaterialPageRoute(builder: (context) => MyHomePage(title: null,)),
       );
       _showMsg(body['message']);
       Navigator.pop(context);

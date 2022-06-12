@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/signup_page_agency.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/LoginOrregisterTxt.dart';
-import 'package:l3_ti_workshop_boudjeda_benfetima/screens/home_page.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

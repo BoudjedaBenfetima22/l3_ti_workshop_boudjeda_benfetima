@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/profileA.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Mapview.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/signup_page_agency.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/signuppageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/profile.dart';
 import 'package:line_icons/line_icons.dart';
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My House',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
 class MyHomePage extends StatefulWidget {
   var title;
@@ -54,13 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
 final List<Widget>screens=[
 OffersListView(),
 AddOfferView(),
-SignupPageClient(),
-SignupPageAgency()
+MapView(),
+ProfilePageA(),
 ];
   @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
+       debugShowCheckedModeBanner: false,
       home: Scaffold(
         extendBody: true,
         body: screens[selectedIndex],
@@ -121,10 +109,10 @@ SignupPageAgency()
                 tabs: [
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.purple,
+                  iconActiveColor: Color(0xff235265),
                     iconColor: Colors.black,
-                    textColor: Colors.purple,
-                    backgroundColor: Colors.purple.withOpacity(.2),
+                    textColor: Color(0xff235265),
+                    backgroundColor: Color.fromARGB(253, 230, 242, 248),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.home,
@@ -132,21 +120,21 @@ SignupPageAgency()
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.pink,
+                    iconActiveColor: Color(0xff235265),
                     iconColor: Colors.black,
-                    textColor: Colors.pink,
-                    backgroundColor: Colors.pink.withOpacity(.2),
+                    textColor: Color(0xff235265),
+                    backgroundColor: Color.fromARGB(253, 230, 242, 248),
                     iconSize: 24,
                     padding: padding,
-                    icon: LineIcons.heart,
-                    text: 'Likes',
+                    icon: Icons.add_circle_outline,
+                    text: 'Add',
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.amber[600],
+                    iconActiveColor: Color(0xff235265),
                     iconColor: Colors.black,
-                    textColor: Colors.amber[600],
-                    backgroundColor: Colors.amber[600]!.withOpacity(.2),
+                    textColor: Color(0xff235265),
+                    backgroundColor: Color.fromARGB(253, 230, 242, 248),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.mapMarked,
@@ -154,10 +142,10 @@ SignupPageAgency()
                   ),
                   GButton(
                     gap: gap,
-                    iconActiveColor: Colors.teal,
+                    iconActiveColor: Color(0xff235265),
                     iconColor: Colors.black,
-                    textColor: Colors.teal,
-                    backgroundColor: Colors.teal.withOpacity(.2),
+                    textColor: Color(0xff235265),
+                    backgroundColor: Color.fromARGB(253, 230, 242, 248),
                     iconSize: 24,
                     padding: padding,
                     icon: LineIcons.user,
