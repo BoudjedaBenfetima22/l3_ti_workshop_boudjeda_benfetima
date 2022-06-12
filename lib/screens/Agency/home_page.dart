@@ -12,6 +12,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/profile.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../mapvview.dart';
+
 class MyHomePage extends StatefulWidget {
   var title;
 
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 final List<Widget>screens=[
 OffersListView(),
 AddOfferView(),
-MapView(),
+FindFriends(),
 ProfilePageA(),
 ];
   @override

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/editprofile.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,10 +37,12 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 1,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back,
+            Icons.edit,
             color: Color(0xff235265),
           ),
           onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => EditProfilePage()));
           },
         ),
       ),
@@ -78,36 +81,18 @@ class _ProfilePageState extends State<ProfilePage> {
                               fit: BoxFit.cover,
                               image: AssetImage('assets/client.png'))),
                     ),
-                    Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            color:  Color(0xff235265),
-                          ),
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                        )),
+                   
                   ],
                 ),
               ),
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Username", "Immo", Icons.person),
+              buildTextField("Username", "Ines", Icons.person),
               SizedBox(
                 height: 35,
               ),
-              buildTextField("E-mail", "immo@gmail.com", Icons.email_rounded),
+              buildTextField("E-mail", "ines@gmail.com", Icons.email_rounded),
               SizedBox(
                 height: 25,
               ),
@@ -115,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(
                 height: 25,
               ),
-              buildTextField("Wilaya", "Constantine", Icons.location_city),
+              buildTextField("Wilaya", "mila", Icons.location_city),
               SizedBox(
                 height: 25,
               ),

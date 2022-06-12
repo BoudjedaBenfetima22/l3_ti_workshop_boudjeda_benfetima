@@ -12,6 +12,7 @@ import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/profile.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../OffersListView.dart';
+import '../mapvview.dart';
 
 class MyHomePageC extends StatefulWidget {
   var title;
@@ -41,7 +42,7 @@ class _MyHomePageCState extends State<MyHomePageC> {
   double gap = 10;
 final List<Widget>screens=[
 OffersListView(),
-MapView(),
+FindFriends(),
 ProfilePage(),
 ];
   @override

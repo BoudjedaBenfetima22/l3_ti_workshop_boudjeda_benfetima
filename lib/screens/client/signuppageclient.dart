@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/home_pagec.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
@@ -124,7 +126,17 @@ class _SignupPageClientState extends State<SignupPageClient> {
             SizedBox(
               height: 10.0,
             ),
-
+             Row(children: [ 
+             SizedBox(width: 110,),
+             Text('Add Avatar', style: GoogleFonts.poppins(
+                    fontSize: 15,
+                    color: Color(0xff235265),
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold),),
+             IconButton(onPressed:getImageGallery
+            
+          , icon: Icon(FontAwesomeIcons.image,color: Color(0xff235265),)),
+             ],),
             ButtonCustom(
               color: Color(0xff235265),
               borderRadius: 32.0,
@@ -149,7 +161,18 @@ class _SignupPageClientState extends State<SignupPageClient> {
       ),
     );
   }
-
+File ?_image;
+  final picker = ImagePicker();
+  Future getImageGallery() async {
+    var pickeFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickeFile != null) {
+        _image = File(pickeFile.path);
+      } else {
+        print("No Image selected");
+      }
+    });
+  }
   _showMsg(msg) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/UserType.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/editprofile.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,11 +36,13 @@ class _ProfilePageAState extends State<ProfilePageA> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
+         icon: Icon(
+            Icons.edit,
             color: Color(0xff235265),
           ),
           onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => EditProfilePage()));
           },
         ),
       ),
@@ -78,25 +81,7 @@ class _ProfilePageAState extends State<ProfilePageA> {
                               fit: BoxFit.cover,
                               image: AssetImage('assets/real-estate.png'))),
                     ),
-                    Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            color:  Color(0xff235265),
-                          ),
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                        )),
+                    
                   ],
                 ),
               ),

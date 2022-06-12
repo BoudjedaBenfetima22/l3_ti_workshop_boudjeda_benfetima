@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
 
 class MapView extends StatefulWidget {
   @override
@@ -22,6 +23,16 @@ class _MapViewState extends State<MapView> {
       appBar: AppBar(
         title: const Text('Maps View'),
         backgroundColor: Color(0xff235265),
+        leading: IconButton(
+         icon: Icon(
+            Icons.arrow_back_ios,
+            color: Color.fromARGB(255, 244, 246, 247),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => AddOfferView()));
+          },
+        ),
       ),
       body: GoogleMap(
         onMapCreated: _onMapCreated,

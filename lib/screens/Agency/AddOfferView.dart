@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Mapview.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
@@ -149,6 +151,19 @@ Widget _buildGridView() {
     return  ListView(
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+             Row(children: [ 
+             SizedBox(width: 110,),
+             Text('Get location', style: GoogleFonts.poppins(
+                    fontSize: 15,
+                    color: Color(0xff235265),
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold),),
+             IconButton(onPressed:() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MapView()));
+              },
+          icon: Icon(FontAwesomeIcons.locationDot,color: Color(0xff235265),)),
+             ],),
             FormFieldCustom(
               controller: pricecontroller,
               hintText: 'Price',
@@ -223,9 +238,7 @@ Widget _buildGridView() {
                     items: <String>[
                       'appartement',
                       'villa',
-                      'castle',
                       'studio',
-                      'bungalow',
                       'house',
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
@@ -493,7 +506,7 @@ Widget _buildGridView() {
         // var response = await Api().postData(data, '/offers');
         if (response.statusCode == 201) {
           Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OffersListView()));
+                      MaterialPageRoute(builder: (context) => MyHomePage(title: null,)));
                  
         } else {
           _showMsg('Error ${response.body}');

@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/loginpageAgency.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
@@ -58,7 +60,7 @@ var adresse;
               ),
             ),
             SizedBox(
-              height: 20,
+              height:10,
             ),
             SizedBox(
               child: Text(
@@ -71,7 +73,7 @@ var adresse;
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             FormFieldCustom(
               controller: agencynamecontroller,
@@ -136,7 +138,18 @@ var adresse;
                     return null;
                   }
                 }),
-            ButtonCustom(
+           Row(children: [ 
+             SizedBox(width: 110,),
+             Text('Add Avatar', style: GoogleFonts.poppins(
+                    fontSize: 15,
+                    color: Color(0xff235265),
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold),),
+             IconButton(onPressed:getImageGallery
+            
+          , icon: Icon(FontAwesomeIcons.image,color: Color(0xff235265),)),
+             ],),
+             ButtonCustom(
               color: Color(0xff235265),
               borderRadius: 32.0,
               textColor: Color.fromARGB(255, 253, 255, 255),
@@ -172,6 +185,18 @@ var adresse;
     ));
   }
 
+File ?_image;
+  final picker = ImagePicker();
+  Future getImageGallery() async {
+    var pickeFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickeFile != null) {
+        _image = File(pickeFile.path);
+      } else {
+        print("No Image selected");
+      }
+    });
+  }
   void Register() async {
     // setState(() {
     //   _isLoading = true;
@@ -185,9 +210,9 @@ var adresse=adresscontroller.text;
     map['email'] = email;
     map['name'] = name;
     map['password'] = password;
-    map['adresse']='blabla';
-  map['phone']='89384889';
-  map['photo']='fkdkhfhgsk';
+    map['adresse']=adresse;
+  map['phone']=phone;
+  // map['photo']=_image;
 
 
     var response = await Api().postData(map, '/register_agence');

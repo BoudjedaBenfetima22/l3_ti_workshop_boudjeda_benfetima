@@ -84,7 +84,7 @@ class _OfferDetailsState extends State<OfferDetailsView> {
               ),
               child: Container(
                 width: 400,
-                height: 500,
+                height: 800,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 15,
                   vertical: 9,
@@ -132,15 +132,14 @@ class _OfferDetailsState extends State<OfferDetailsView> {
                     Row(
                       children: [
                         Icon(
-                          FontAwesomeIcons.locationDot,
+                          Icons.location_city,
                           size: 20,
                           color: Color(0xff235265),
                         ),
                         SizedBox(width: 9),
                         Text(
-                          offer['wilaya'].toString() +
-                              "   " +
-                              offer['localisation'].toString(),
+                          offer['wilaya'].toString() 
+                              ,
                           style: GoogleFonts.poppins(
                             color: Color.fromARGB(255, 45, 45, 45),
                             fontSize: 22,
@@ -149,6 +148,21 @@ class _OfferDetailsState extends State<OfferDetailsView> {
                         ),
                       ],
                     ),
+                    Row(children: [
+                      Icon(
+                          FontAwesomeIcons.mapLocationDot,
+                          size: 20,
+                          color: Color(0xff235265),
+                        ),
+                        SizedBox(width: 9),
+                      Text(
+
+                              offer['localisation'].toString(),
+                          style: GoogleFonts.poppins(
+                            color: Color.fromARGB(255, 45, 45, 45),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),),],),
                     SizedBox(height: 20),
                     Row(
                       children: [
