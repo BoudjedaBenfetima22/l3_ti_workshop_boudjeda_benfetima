@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
+
+import '../../widget/ButtonCustom.dart';
 
 class OfferDetailsView extends StatefulWidget {
   @override
@@ -266,17 +269,30 @@ class _OfferDetailsState extends State<OfferDetailsView> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                     
+                   ButtonCustom(
+                  text: 'Call',
+            color: Color(0xff235265),
+            borderRadius: 32.0,
+            textColor: Color.fromARGB(255, 253, 255, 255),
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            onPressed: _callNumber
+                ,),
                   ],
                 ),
               ),
             )
+            
           ],
         ),
       ),
+      
     );
    
   }
+_callNumber() async{
+  const number = '0550963508'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);}
 
   Widget _buildGridView() {
     return GridView.count(
