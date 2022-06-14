@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
       localStorage.setString('user', json.encode(body['user']));
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MyHomePage(title: '',)),
+        MaterialPageRoute(builder: (context) => MyHomePageC(title: '',)),
       );
       _showMsg(body['message']);
       Navigator.pop(context);

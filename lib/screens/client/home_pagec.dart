@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Mapview.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/signup_page_agency.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/offerlistviewc.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/signuppageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/loginpageclient.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
@@ -41,7 +42,7 @@ class _MyHomePageCState extends State<MyHomePageC> {
   final padding = EdgeInsets.symmetric(horizontal: 18, vertical: 12);
   double gap = 10;
 final List<Widget>screens=[
-OffersListView(),
+OffersListViewc(),
 FindFriends(),
 ProfilePage(),
 ];

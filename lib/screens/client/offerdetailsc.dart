@@ -10,14 +10,14 @@ import 'package:l3_ti_workshop_boudjeda_benfetima/screens/editoffer.dart';
 
 import '../../widget/ButtonCustom.dart';
 
-class OfferDetailsView extends StatefulWidget {
+class OfferDetailsViewc extends StatefulWidget {
   @override
-  _OfferDetailsState createState() => _OfferDetailsState();
+  _OfferDetailscState createState() => _OfferDetailscState();
   final int offer_id;
-  OfferDetailsView({required this.offer_id});
+  OfferDetailsViewc({required this.offer_id});
 }
 
-class _OfferDetailsState extends State<OfferDetailsView> {
+class _OfferDetailscState extends State<OfferDetailsViewc> {
   get title => null;
 
   @override
@@ -53,13 +53,7 @@ class _OfferDetailsState extends State<OfferDetailsView> {
           IconButton(onPressed: () 
                   => Navigator.of(context).pop(),icon: Icon(Icons.arrow_back_ios)),
           SizedBox(width: 210,),
-          IconButton(onPressed: () {
-                _deleteOffer();
-          }, icon: Icon(Icons.delete)),
-          IconButton(onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => EditOfferView()));
-          }, icon: Icon(Icons.edit)),
+          
             ],),
             Container(
               height: 200,

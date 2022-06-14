@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      initialRoute: initScreen == 1 || initScreen == null ? 'onboard' : 'home',
+      initialRoute: initScreen ==1|| initScreen == null ? 'onboard' : 'home',
       routes: {
-        'home' : (context) => Type(),
+        'home' : (context) => onBoardingPage(),
         'onboard': (context) => onBoardingPage(),
       },
     );

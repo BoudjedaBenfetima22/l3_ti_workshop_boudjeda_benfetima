@@ -25,6 +25,11 @@ class Api {
     //token = await SharedPreferencesManager().getAuthToken();
     return await http.delete(Uri.parse(fullUrl), headers: _setHeaders());
   }
+  updateData(apiUrl) async {
+    var fullUrl = _baseUrl + apiUrl;
+    //token = await SharedPreferencesManager().getAuthToken();
+    return await http.put(Uri.parse(fullUrl), headers: _setHeaders());
+  }
   getData(apiUrl) async {
     var fullUrl = _baseUrl + apiUrl;
     token = await SharedPreferencesManager().getAuthToken();

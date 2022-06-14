@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/helpers/Api.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/home_page.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Mapview.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
@@ -13,16 +14,17 @@ import 'package:l3_ti_workshop_boudjeda_benfetima/widget/ButtonCustom.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/widget/TextFormField.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddOfferView extends StatefulWidget {
+class EditOfferView extends StatefulWidget {
   @override
-  _AddOfferState createState() => _AddOfferState();
+  _EditOfferState createState() => _EditOfferState();
 }
 
-class _AddOfferState extends State<AddOfferView> {
+class _EditOfferState extends State<EditOfferView> {
    @override
   void initState() {
     super.initState();
-    // _loadCategories();
+  
+  
   }
 
   String category_id = "1";
@@ -41,7 +43,7 @@ class _AddOfferState extends State<AddOfferView> {
   late File _image;
   List<XFile> images = [];
   final picker = ImagePicker();
-  
+   late final int offer_id;
   Future getImageGallery() async {
     var res = await picker.pickMultiImage();
     setState(() {
@@ -121,19 +123,28 @@ Widget _buildGridView() {
     );
   }
   @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff235265),
           title: Text(
-            'Add new Offer',
+            'Edit Offer',
             style: GoogleFonts.poppins(
                 fontSize: 19,
                 color: Color.fromARGB(255, 249, 250, 250),
                 letterSpacing: 0.5,
                 fontWeight: FontWeight.w400),
           ),
+           leading: IconButton(
+         icon: Icon(
+            Icons.arrow_back_ios,
+            color: Color.fromARGB(255, 244, 246, 247),
+          ),
+          onPressed: () 
+                  => Navigator.of(context).pop(),
+        ),
         ),
         body: Stack(
           children: <Widget>[
@@ -483,8 +494,37 @@ Widget _buildGridView() {
     );
   
   }
-
-
+  // _loadOfferDetails() async {
+  //   var response = await Api().getData('/offers/' + widget.offer_id.toString());
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       offer = json.decode(response.body);
+  //     });
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       content: Text(
+  //           'Error ' + response.statusCode.toString() + ': ' + response.body),
+  //     ));
+  //   }
+  // }
+// _editOffer() async {
+//     var response =
+//         await Api().updateData('/offers/' + widget.offer_id.toString());
+//     if (response.statusCode == 200) {
+//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+//         content: Text(response.statusCode.toString() + ': ' + response.body),
+//       ));
+//        Navigator.push(
+//         context,
+//         MaterialPageRoute(builder: (context) => MyHomePage(title: '',)),
+//       );
+//     } else {
+//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+//         content: Text(
+//             'Error ' + response.statusCode.toString() + ': ' + response.body),
+//       ));
+//     }
+//   }
    void _submit() async {
      print(images.length);
         // setState(() {
@@ -502,8 +542,6 @@ Widget _buildGridView() {
         data['type_doffre'] =typeValue ;
         data['categorie'] = categoryValue;
         data['agence_id'] = '1';
-    //     data['longitude'] = longitude;
-    // data['latitude'] = latitude;
         var response = await Api().postDataWithImages(data,'/offers',images);
         // var response = await Api().postData(data, '/offers');
         if (response.statusCode == 201) {

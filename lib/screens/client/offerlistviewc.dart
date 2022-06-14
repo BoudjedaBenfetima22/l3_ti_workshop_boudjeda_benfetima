@@ -8,19 +8,19 @@ import 'package:l3_ti_workshop_boudjeda_benfetima/screens/Agency/AddOfferView.da
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/OffersListView.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/houses.dart';
 import 'package:l3_ti_workshop_boudjeda_benfetima/screens/studio.dart';
-import 'Agency/OfferDetailsView.dart';
-import 'appartement.dart';
-import 'villa.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/client/offerdetailsc.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/appartement.dart';
+import 'package:l3_ti_workshop_boudjeda_benfetima/screens/villa.dart';
 
-class OffersListView extends StatefulWidget {
+class OffersListViewc extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     
-    return _OffersListState();
+    return _OffersListcState();
   }
 }
 
-class _OffersListState extends State<OffersListView> {
+class _OffersListcState extends State<OffersListViewc> {
   var _offers = [];
  
   @override
@@ -75,7 +75,7 @@ class _OffersListState extends State<OffersListView> {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      OfferDetailsView(offer_id: _offers[index]['id'])));
+                      OfferDetailsViewc(offer_id: _offers[index]['id'])));
           },
           child:Container(
             height: 190,
